@@ -30,13 +30,12 @@
     //设置Run loop observer的运行环境
     CFRunLoopObserverContext  context = {0, (__bridge void *)(self), NULL, NULL, NULL};
     //创建Run loop observer对象
-    //第一个参数用于分配observer对象的内存
-    //第二个参数用以设置observer所要关注的事件，详见回调函数myRunLoopObserver中注释
-    //第三个参数用于标识该observer是在第一次进入run loop时执行还是每次进入run loop处理时均执行
-    //第四个参数用于设置该observer的优先级
-    //第五个参数用于设置该observer的回调函数
-    //第六个参数用于设置该observer的运行环境
-    CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault, kCFRunLoopAllActivities, YES, 0, &myRunLoopObserver, &context);
+    CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,    //分配observer对象的内存
+                                                            kCFRunLoopAllActivities,//设置observer所要关注的事件，详见回调函数myRunLoopObserver中注释
+                                                            YES,                    //标识该observer是在第一次进入run loop时执行还是每次进入run loop处理时均执行
+                                                            0,                      //设置该observer的优先级
+                                                            &myRunLoopObserver,     //设置该observer的回调函数
+                                                            &context);              //设置该observer的运行环境
     
     
     if (observer) {
